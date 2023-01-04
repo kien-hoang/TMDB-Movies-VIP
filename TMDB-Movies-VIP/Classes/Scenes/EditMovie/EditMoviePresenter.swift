@@ -10,6 +10,11 @@ import Foundation
 
 protocol InteractorToPresenterEditMovieProtocol {
     func showMovieData(with movie: MovieModel, config: TMDBConfiguration?)
+    func updateMovieDataSuccess()
+    
+    func showMovieTitleError(_ error: String?)
+    func showMovieOverviewError(_ error: String?)
+    func showMoviePointAverageError(_ error: String?)
 }
 
 final class EditMoviePresenter {
@@ -22,6 +27,22 @@ final class EditMoviePresenter {
 // MARK: - InteractorToPresenter
 
 extension EditMoviePresenter: InteractorToPresenterEditMovieProtocol {
+    func updateMovieDataSuccess() {
+        view?.updateMovieDataSuccess()
+    }
+    
+    func showMovieTitleError(_ error: String?) {
+        view?.showMovieTitleError(error)
+    }
+    
+    func showMovieOverviewError(_ error: String?) {
+        view?.showMovieOverviewError(error)
+    }
+    
+    func showMoviePointAverageError(_ error: String?) {
+        view?.showMoviePointAverageError(error)
+    }
+    
     func showMovieData(with movie: MovieModel, config: TMDBConfiguration?) {
         let baseImageUrl = config?.images.baseURL
         let size = "w300" // Hardcode temporarily
@@ -37,7 +58,3 @@ extension EditMoviePresenter: InteractorToPresenterEditMovieProtocol {
         view?.updateUI(with: viewModel)
     }
 }
-
-// MARK: - Private
-
-private extension EditMoviePresenter {}

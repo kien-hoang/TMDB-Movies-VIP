@@ -100,6 +100,9 @@
                                 <state key="normal" title="UPDATE">
                                     <color key="titleColor" name="color_ffffff"/>
                                 </state>
+                                <connections>
+                                    <action selector="updateButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9vz-Xf-pkX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

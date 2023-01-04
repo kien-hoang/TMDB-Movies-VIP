@@ -8,7 +8,9 @@
 
 import UIKit
 
-protocol ViewToRouterEditMovieProtocol: AnyObject {}
+protocol ViewToRouterEditMovieProtocol: AnyObject {
+    func navigateBackToUpcomingMovies()
+}
 
 protocol DataPassingEditMovieProtocol {
     var dataStore: DataStoreEditMovieProtocol? { get }
@@ -25,27 +27,26 @@ final class EditMovieRouter: DataPassingEditMovieProtocol {
 // MARK: - ViewToRouter
 
 extension EditMovieRouter: ViewToRouterEditMovieProtocol {
-    /*
-    func navigateToSomeWhere() {
-        let storyboard = UIStoryboard(name: "SomeWhere", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: String(describing: SomeWhereViewController.self)) as! SomeWhereViewController
+    func navigateBackToUpcomingMovies() {
+        guard let destinationVC = view?.navigationController?.viewControllers.first(where: { $0 is UpcomingMoviesViewController }) as? UpcomingMoviesViewController else { return }
         var destinationDS = destinationVC.router!.dataStore!
         passDataToSomeWhere(source: dataStore!, destination: &destinationDS)
+        destinationVC.updateMovieSuccess()
         navigateToSomeWhere(source: view!, destination: destinationVC)
     }
     
     // MARK: - Navigation
     
     func navigateToSomeWhere(source: EditMovieViewController,
-                             destination: SomeWhereViewController) {
-        source.navigationController?.pushViewController(destination, animated: true)
+                             destination: UpcomingMoviesViewController) {
+        source.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Passing data
     
     func passDataToSomeWhere(source: DataStoreEditMovieProtocol,
-                             destination: inout SomeWhereDataStore) {
-        // destination.name = source.name
+                             destination: inout DataStoreUpcomingMoviesProtocol) {
+        guard let firstIndex = destination.moviesResponse?.movies?.firstIndex(where: { $0.id == source.movie.id }) else { return }
+        destination.moviesResponse?.movies?[firstIndex] = source.movie
     }
-    */
 }

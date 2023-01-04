@@ -10,6 +10,11 @@ import UIKit
 
 protocol PresenterToViewEditMovieProtocol: AnyObject {
     func updateUI(with viewModel: EditMovie.EditMovie.ViewModel)
+    func updateMovieDataSuccess()
+    
+    func showMovieTitleError(_ error: String?)
+    func showMovieOverviewError(_ error: String?)
+    func showMoviePointAverageError(_ error: String?)
 }
 
 final class EditMovieViewController: BaseViewController {
@@ -74,11 +79,37 @@ final class EditMovieViewController: BaseViewController {
 
 // MARK: - IBAction
 
-private extension EditMovieViewController {}
+private extension EditMovieViewController {
+    @IBAction func updateButtonTapped(_ sender: Any) {
+        let title = titleTextField.inputTextField.text.orEmpty.asTrimmed
+        let overview = overviewTextField.inputTextField.text.orEmpty.asTrimmed
+        let point = pointAverageTextField.inputTextField.text.orEmpty.asTrimmed
+        
+        interactor?.requestUpdateMovie(EditMovie.EditMovie.Request(title: title,
+                                                                   overview: overview,
+                                                                   pointAverage: point))
+    }
+}
 
 // MARK: - PresenterToView
 
 extension EditMovieViewController: PresenterToViewEditMovieProtocol {
+    func updateMovieDataSuccess() {
+        router?.navigateBackToUpcomingMovies()
+    }
+    
+    func showMovieTitleError(_ error: String?) {
+        titleTextField.error = error
+    }
+    
+    func showMovieOverviewError(_ error: String?) {
+        overviewTextField.error = error
+    }
+    
+    func showMoviePointAverageError(_ error: String?) {
+        pointAverageTextField.error = error
+    }
+    
     func updateUI(with viewModel: EditMovie.EditMovie.ViewModel) {
         idTextField.inputTextField.text = viewModel.id
         titleTextField.inputTextField.text = viewModel.title
@@ -99,6 +130,30 @@ extension EditMovieViewController: PresenterToViewEditMovieProtocol {
 private extension EditMovieViewController {
     func setupUI() {
         idTextField.isEditable = false
-        pointAverageTextField.inputTextField.keyboardType = .numberPad
+        titleTextField.inputTextField.delegate = self
+        overviewTextField.inputTextField.delegate = self
+        pointAverageTextField.inputTextField.delegate = self
+        pointAverageTextField.inputTextField.keyboardType = .decimalPad
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension EditMovieViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        switch textField {
+        case titleTextField.inputTextField:
+            return interactor?.canUpdateTitleTextField(textField.text,
+                                                       shouldChangeCharactersIn: range,
+                                                       replacementString: string) ?? false
+        case overviewTextField.inputTextField:
+            return interactor?.canUpdateOverviewTextField(textField.text,
+                                                          shouldChangeCharactersIn: range,
+                                                          replacementString: string) ?? false
+        default:
+            return true
+        }
     }
 }

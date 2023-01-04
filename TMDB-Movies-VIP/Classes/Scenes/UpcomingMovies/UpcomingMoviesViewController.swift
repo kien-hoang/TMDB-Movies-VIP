@@ -7,7 +7,6 @@
 
 import UIKit
 import SVProgressHUD
-import SVPullToRefresh
 
 protocol PresenterToViewUpcomingMoviesProtocol: BaseViewControllerProtocol {
     func reloadTableViewData(with getMoviesViewModel: UpcomingMovies.GetMovies.ViewModel)
@@ -23,7 +22,7 @@ final class UpcomingMoviesViewController: BaseViewController {
     // MARK: - Public Variable
     
     var interactor: ViewToInteractorUpcomingMoviesProtocol?
-    var router: ViewToRouterUpcomingMoviesProtocol?
+    var router: (ViewToRouterUpcomingMoviesProtocol & DataPassingUpcomingMoviesProtocol)?
     
     // MARK: - Private Variable
     
@@ -61,6 +60,14 @@ private extension UpcomingMoviesViewController {
     }
 }
 
+// MARK: - Public
+
+extension UpcomingMoviesViewController {
+    func updateMovieSuccess() {
+        interactor?.reloadTableViewData()
+    }
+}
+
 // MARK: - PresenterToView
 
 extension UpcomingMoviesViewController: PresenterToViewUpcomingMoviesProtocol {
@@ -77,12 +84,6 @@ private extension UpcomingMoviesViewController {
         tableView.register(UpcomingMovieCell.self)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.addPullToRefresh { [weak self] in
-//            self?.presenter.requestPullToRefresh()
-        }
-        tableView.addInfiniteScrolling { [weak self] in
-//            self?.presenter.requestLoadMoreTableView()
-        }
     }
 }
 

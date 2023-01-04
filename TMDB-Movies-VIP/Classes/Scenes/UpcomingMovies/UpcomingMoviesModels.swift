@@ -28,7 +28,7 @@ enum UpcomingMovies {
     enum GetMovies {
         struct Request {}
         struct Response {
-            let movies: [MovieModel]?
+            var movies: [MovieModel]?
             var error: ServiceError?
             
             init(movies: [MovieModel]? = nil, error: ServiceError? = nil) {
@@ -67,9 +67,9 @@ struct TMDBImageConfiguration: Decodable {
 
 struct MovieModel: Decodable {
     let id: Int
-    let title: String
-    let overview: String
-    let voteAverage: Float
+    var title: String
+    var overview: String
+    var voteAverage: Float
     let posterPath: String
     let backdropPath: String
     

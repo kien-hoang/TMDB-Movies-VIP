@@ -14,6 +14,9 @@ enum EditMovie {
     
     enum EditMovie {
         struct Request {
+            let title: String
+            let overview: String
+            let pointAverage: String
         }
         struct Response {
         }

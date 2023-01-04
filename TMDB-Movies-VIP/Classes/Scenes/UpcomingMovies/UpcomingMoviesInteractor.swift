@@ -9,6 +9,7 @@ import Foundation
 
 protocol ViewToInteractorUpcomingMoviesProtocol {
     func viewDidLoad()
+    func reloadTableViewData()
 }
 
 protocol DataStoreUpcomingMoviesProtocol {
@@ -33,6 +34,14 @@ final class UpcomingMoviesInteractor: DataStoreUpcomingMoviesProtocol {
 // MARK: - ViewToInteractor
 
 extension UpcomingMoviesInteractor: ViewToInteractorUpcomingMoviesProtocol {
+    func reloadTableViewData() {
+        guard let movies = moviesResponse,
+              let configuration = configurationResponse else { return }
+        
+        presenter?.showUpcomingMovies(with: movies,
+                                      configuration: configuration)
+    }
+    
     func viewDidLoad() {
         presenter?.showLoading()
         getTMDBConfiguration()
