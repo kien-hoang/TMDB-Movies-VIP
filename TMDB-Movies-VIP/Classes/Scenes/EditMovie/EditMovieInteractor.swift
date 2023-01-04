@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ViewToInteractorEditMovieProtocol {
-    func setupMovieData()
+    func getMovieData()
 }
 
 protocol DataStoreEditMovieProtocol {
@@ -33,9 +33,8 @@ final class EditMovieInteractor: DataStoreEditMovieProtocol {
 // MARK: - ViewToInteractor
 
 extension EditMovieInteractor: ViewToInteractorEditMovieProtocol {
-    func setupMovieData() {
-        print("DEBUG: \(movie.title)")
-        print("DEBUG: \(tmdbConfig?.images.baseURL)")
+    func getMovieData() {
+        presenter?.showMovieData(with: movie, config: tmdbConfig)
     }
 }
 

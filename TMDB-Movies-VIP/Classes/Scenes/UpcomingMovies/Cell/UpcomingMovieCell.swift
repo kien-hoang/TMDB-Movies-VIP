@@ -8,7 +8,7 @@
 import UIKit
 
 final class UpcomingMovieCell: UITableViewCell {
-
+    
     // MARK: - IBOutlet
     
     @IBOutlet private weak var posterImageView: UIImageView!
@@ -43,6 +43,10 @@ extension UpcomingMovieCell {
         nameLabel.text = "Name: \(movie.title)"
         overviewLabel.text = "Overview: \(movie.overview)"
         averagePointLabel.text = "Vote Average: \(movie.voteAverage)"
-        posterImageView.setImage(with: URL(string: movie.posterUrl))
+        if let posterUrl = movie.posterUrl {
+            posterImageView.setImage(with: URL(string: posterUrl))
+        } else {
+            // Show placeholder
+        }
     }
 }

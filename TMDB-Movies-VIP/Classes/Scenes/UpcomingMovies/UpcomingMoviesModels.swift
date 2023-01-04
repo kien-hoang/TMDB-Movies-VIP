@@ -49,8 +49,8 @@ struct UpcomingMovieViewModel {
     let title: String
     let overview: String
     let voteAverage: Float
-    let posterUrl: String
-    let backdropUrl: String
+    let posterUrl: String?
+    let backdropUrl: String?
 }
 
 struct TMDBConfiguration: Decodable {

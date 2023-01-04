@@ -39,6 +39,8 @@
 		137B27282961A49300F496FC /* UpcomingMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B27262961A49300F496FC /* UpcomingMovieCell.swift */; };
 		137B27292961A49300F496FC /* UpcomingMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137B27272961A49300F496FC /* UpcomingMovieCell.xib */; };
 		137B272B29628BA700F496FC /* UpcomingMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B272A29628BA700F496FC /* UpcomingMoviesInteractor.swift */; };
+		137C9BB229652FAB002887B1 /* CommonTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137C9BB029652FAB002887B1 /* CommonTextField.xib */; };
+		137C9BB329652FAB002887B1 /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BB129652FAB002887B1 /* CommonTextField.swift */; };
 		13A18A1E296403DD008514F6 /* UpcomingMoviesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A18A1D296403DD008514F6 /* UpcomingMoviesRouter.swift */; };
 		13A18A7F2964453E008514F6 /* EditMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A18A772964453E008514F6 /* EditMovie.storyboard */; };
 		13A18A802964453E008514F6 /* EditMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A18A782964453E008514F6 /* EditMoviePresenter.swift */; };
@@ -87,6 +89,8 @@
 		137B27262961A49300F496FC /* UpcomingMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieCell.swift; sourceTree = "<group>"; };
 		137B27272961A49300F496FC /* UpcomingMovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingMovieCell.xib; sourceTree = "<group>"; };
 		137B272A29628BA700F496FC /* UpcomingMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesInteractor.swift; sourceTree = "<group>"; };
+		137C9BB029652FAB002887B1 /* CommonTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonTextField.xib; sourceTree = "<group>"; };
+		137C9BB129652FAB002887B1 /* CommonTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
 		13A18A1D296403DD008514F6 /* UpcomingMoviesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesRouter.swift; sourceTree = "<group>"; };
 		13A18A772964453E008514F6 /* EditMovie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditMovie.storyboard; sourceTree = "<group>"; };
 		13A18A782964453E008514F6 /* EditMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoviePresenter.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 		137B26EB2961674400F496FC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				13A18A8729652F55008514F6 /* CustomViews */,
 				137B26EC2961674400F496FC /* Constants */,
 			);
 			path = Common;
@@ -297,6 +302,23 @@
 				13A18A7E2964453E008514F6 /* EditMovieConfigurator.swift */,
 			);
 			path = EditMovie;
+			sourceTree = "<group>";
+		};
+		13A18A8729652F55008514F6 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				13A18A8C29652F60008514F6 /* CommonTextField */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		13A18A8C29652F60008514F6 /* CommonTextField */ = {
+			isa = PBXGroup;
+			children = (
+				137C9BB129652FAB002887B1 /* CommonTextField.swift */,
+				137C9BB029652FAB002887B1 /* CommonTextField.xib */,
+			);
+			path = CommonTextField;
 			sourceTree = "<group>";
 		};
 		3F06571BA512FEA778FBE9CD /* Pods */ = {
@@ -382,6 +404,7 @@
 				137B26D7296162C600F496FC /* LaunchScreen.storyboard in Resources */,
 				137B27292961A49300F496FC /* UpcomingMovieCell.xib in Resources */,
 				137B26D4296162C600F496FC /* Assets.xcassets in Resources */,
+				137C9BB229652FAB002887B1 /* CommonTextField.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +463,7 @@
 				137B27052961674400F496FC /* LocalizableConstant.swift in Sources */,
 				137B27142961674400F496FC /* Optional+Extensions.swift in Sources */,
 				1341442E296319DF00EFDF84 /* TMDBNetworkingConfiguration.swift in Sources */,
+				137C9BB329652FAB002887B1 /* CommonTextField.swift in Sources */,
 				137B272429616AF500F496FC /* NetworkingConstant.swift in Sources */,
 				137B27162961688700F496FC /* UIImageView+Kingfisher.swift in Sources */,
 				13A18A802964453E008514F6 /* EditMoviePresenter.swift in Sources */,

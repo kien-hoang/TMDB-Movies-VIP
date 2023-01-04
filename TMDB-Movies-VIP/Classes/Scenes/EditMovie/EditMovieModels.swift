@@ -12,12 +12,18 @@ enum EditMovie {
     
     // MARK: Use cases
     
-    enum Something {
+    enum EditMovie {
         struct Request {
         }
         struct Response {
         }
         struct ViewModel {
+            let id: String
+            let title: String
+            let overview: String
+            let pointAverage: String
+            let posterImageUrl: String?
+            let backdropImageUrl: String?
         }
     }
 }

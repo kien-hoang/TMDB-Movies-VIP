@@ -51,15 +51,19 @@ private extension UpcomingMoviesPresenter {
                          configuration: UpcomingMovies.GetTMDBConfiguration.Response) -> [UpcomingMovieViewModel] {
         guard let movies = moviesResponse.movies else { return [] }
         
-        let baseImageUrl = (configuration.tmdbConfig?.images.baseURL).orEmpty
+        let baseImageUrl = configuration.tmdbConfig?.images.baseURL
         let size = "w300" // Hardcode temporarily
+        
         let viewModels = movies.map {
-            UpcomingMovieViewModel(id: $0.id,
-                                   title: $0.title,
-                                   overview: $0.overview,
-                                   voteAverage: $0.voteAverage,
-                                   posterUrl: baseImageUrl + size + $0.posterPath,
-                                   backdropUrl: baseImageUrl + size + $0.backdropPath)
+            let posterImageUrl = baseImageUrl != nil ? baseImageUrl! + size + $0.posterPath : nil
+            let backdropImageUrl = baseImageUrl != nil ? baseImageUrl! + size + $0.backdropPath : nil
+            
+            return UpcomingMovieViewModel(id: $0.id,
+                                          title: $0.title,
+                                          overview: $0.overview,
+                                          voteAverage: $0.voteAverage,
+                                          posterUrl: posterImageUrl,
+                                          backdropUrl: backdropImageUrl)
         }
         
         return viewModels

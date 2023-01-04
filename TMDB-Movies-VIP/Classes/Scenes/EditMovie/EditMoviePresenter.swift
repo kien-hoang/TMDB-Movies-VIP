@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol InteractorToPresenterEditMovieProtocol {}
+protocol InteractorToPresenterEditMovieProtocol {
+    func showMovieData(with movie: MovieModel, config: TMDBConfiguration?)
+}
 
 final class EditMoviePresenter {
     
@@ -19,7 +21,22 @@ final class EditMoviePresenter {
 
 // MARK: - InteractorToPresenter
 
-extension EditMoviePresenter: InteractorToPresenterEditMovieProtocol {}
+extension EditMoviePresenter: InteractorToPresenterEditMovieProtocol {
+    func showMovieData(with movie: MovieModel, config: TMDBConfiguration?) {
+        let baseImageUrl = config?.images.baseURL
+        let size = "w300" // Hardcode temporarily
+        let posterImageUrl = baseImageUrl != nil ? baseImageUrl! + size + movie.posterPath : nil
+        let backdropImageUrl = baseImageUrl != nil ? baseImageUrl! + size + movie.backdropPath : nil
+        
+        let viewModel = EditMovie.EditMovie.ViewModel(id: "\(movie.id)",
+                                                      title: movie.title,
+                                                      overview: movie.overview,
+                                                      pointAverage: "\(movie.voteAverage)",
+                                                      posterImageUrl: posterImageUrl,
+                                                      backdropImageUrl: backdropImageUrl)
+        view?.updateUI(with: viewModel)
+    }
+}
 
 // MARK: - Private
 
