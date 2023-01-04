@@ -1,0 +1,64 @@
+# Xcode
+## User settings
+xcuserdata/
+
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.xcuserstate
+.DS_Store
+.idea/
+*.generated.swift
+SetelSecrets.env
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/*
+!Carthage/Files/
+!Carthage/Files/**
+Carthage/Build/*
+!Carthage/Build/
+!Carthage/Build/*.xcframework
+!Carthage/Build/iOS
+!Carthage/Build/iOS/**
+!Carthage/Build/*.xcframework
+
+# UIComponents
+!UIComponents/build/
+
+# fastlane specific
+**/fastlane/report.xml
+
+# deliver temporary files
+**/fastlane/Preview.html
+
+# snapshot generated screenshots
+**/fastlane/screenshots
+
+# scan temporary files
+**/fastlane/test_output
+
+# Mockingbird
+*.xcodeproj/MockingbirdCache
+
+# Node
+node_modules

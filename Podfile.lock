@@ -1,0 +1,41 @@
+PODS:
+  - Alamofire (5.6.2)
+  - Kingfisher (7.3.2)
+  - Localize-Swift (3.2.0):
+    - Localize-Swift/LocalizeSwiftCore (= 3.2.0)
+    - Localize-Swift/UIKit (= 3.2.0)
+  - Localize-Swift/LocalizeSwiftCore (3.2.0)
+  - Localize-Swift/UIKit (3.2.0):
+    - Localize-Swift/LocalizeSwiftCore
+  - SVProgressHUD (2.2.5)
+  - SVPullToRefresh (0.4.1)
+  - SwiftLint (0.49.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kingfisher
+  - Localize-Swift (~> 3.2)
+  - SVProgressHUD
+  - SVPullToRefresh
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - Localize-Swift
+    - SVProgressHUD
+    - SVPullToRefresh
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  Localize-Swift: 6f4475136bdb0d7b2882ea3d4ea919d70142b232
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
+
+PODFILE CHECKSUM: f7ac3389ceae16b9be407edb33bd2dacd97ca106
+
+COCOAPODS: 1.11.3
