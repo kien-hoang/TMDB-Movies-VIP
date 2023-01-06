@@ -29,7 +29,7 @@ final class EditMovieInteractor: DataStoreEditMovieProtocol {
     
     struct Constant {
         static let titleMaxLength = 50
-        static let overviewMaxLength = 200
+        static let overviewMaxLength = 500
         static let pointMin = 0.0
         static let pointMax = 10.0
     }
