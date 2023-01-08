@@ -70,8 +70,8 @@ struct MovieModel: Decodable {
     var title: String
     var overview: String
     var voteAverage: Float
-    let posterPath: String
-    let backdropPath: String
+    let posterPath: String?
+    let backdropPath: String?
     
     enum CodingKeys: String, CodingKey {
         case id, title, overview

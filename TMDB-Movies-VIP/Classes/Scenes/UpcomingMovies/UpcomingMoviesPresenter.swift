@@ -55,8 +55,14 @@ private extension UpcomingMoviesPresenter {
         let size = "w300" // Hardcode temporarily
         
         let viewModels = movies.map {
-            let posterImageUrl = baseImageUrl != nil ? baseImageUrl! + size + $0.posterPath : nil
-            let backdropImageUrl = baseImageUrl != nil ? baseImageUrl! + size + $0.backdropPath : nil
+            var posterImageUrl: String? = nil
+            if baseImageUrl != nil && $0.posterPath != nil {
+                posterImageUrl = baseImageUrl! + size + $0.posterPath!
+            }
+            var backdropImageUrl: String?
+            if baseImageUrl != nil && $0.backdropPath != nil {
+                backdropImageUrl = baseImageUrl! + size + $0.backdropPath!
+            }
             
             return UpcomingMovieViewModel(id: $0.id,
                                           title: $0.title,

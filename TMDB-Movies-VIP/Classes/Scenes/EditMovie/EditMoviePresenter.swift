@@ -46,8 +46,14 @@ extension EditMoviePresenter: InteractorToPresenterEditMovieProtocol {
     func showMovieData(with movie: MovieModel, config: TMDBConfiguration?) {
         let baseImageUrl = config?.images.baseURL
         let size = "w300" // Hardcode temporarily
-        let posterImageUrl = baseImageUrl != nil ? baseImageUrl! + size + movie.posterPath : nil
-        let backdropImageUrl = baseImageUrl != nil ? baseImageUrl! + size + movie.backdropPath : nil
+        var posterImageUrl: String? = nil
+        if baseImageUrl != nil && movie.posterPath != nil {
+            posterImageUrl = baseImageUrl! + size + movie.posterPath!
+        }
+        var backdropImageUrl: String? = nil
+        if baseImageUrl != nil && movie.backdropPath != nil {
+            backdropImageUrl = baseImageUrl! + size + movie.backdropPath!
+        }
         
         let viewModel = EditMovie.EditMovie.ViewModel(id: "\(movie.id)",
                                                       title: movie.title,
